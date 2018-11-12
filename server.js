@@ -2,9 +2,14 @@
 const express = require('express');
 const app = express();
 const expbs = require('express-handlebars');
+const path = require('path');
 
 // uses the handlebars engine
-app.engine('handlebars', expbs());
+// uses files on the layout folder {defaultLayout: 'main'}
+// {layoutsDir: 'views/whatever'} let us change the layout folder name
+// layoutsDir: path.join(__dirname, 'views/test') })); makes it compatible with windows
+app.engine('handlebars', expbs({ defaultLayout: 'main', 
+layoutsDir: path.join(__dirname, 'views/test') }));
 // look for any files that uses handlebars
 app.set('view engine', 'handlebars');
 
