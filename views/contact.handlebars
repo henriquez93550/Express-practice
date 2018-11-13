@@ -1,0 +1,21 @@
+<h2>Welcome to the contact page</h2>
+
+{{!-- #each loops the array --}}
+{{!-- as can assign certain words to the value of the object or list. It can also be used to replace THIS --}}
+{{#each user as |value key| }}
+{{!-- 'This' or '.'  allows us to print what is inside the array --}}
+{{!-- @ key shows all the keys from an object ie. name: address: etc --}}
+{{!-- {{key} : and value can be used to see both keys and value --}}
+    <p>{{key}}: {{value}} </p>
+
+{{/each}}
+<hr>
+
+{{#each lists}}
+{{!-- {log this} shows you what THIS is on the terminal --}}
+    {{#each this.items}}
+        <p>{{this}}</p>
+{{!-- need a second #each to print second array if there is more than one object --}}
+        {{/each}}
+        <hr>
+   {{/each}} 
