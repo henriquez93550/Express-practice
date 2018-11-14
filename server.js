@@ -4,12 +4,15 @@ const app = express();
 const expbs = require('express-handlebars');
 const path = require('path');
 
+
 // uses the handlebars engine
 // uses files on the layout folder {defaultLayout: 'main'}
 // {layoutsDir: 'views/whatever'} let us change the layout folder name
 // layoutsDir: path.join(__dirname, 'views/mainLayout') })); makes it compatible with windows
 app.engine('handlebars', expbs({ defaultLayout: 'main', 
-layoutsDir: path.join(__dirname, 'views/mainLayout') }));
+layoutsDir: path.join(__dirname, 'views/mainLayout')}));
+//extname: '.henriquez'   changing handlebars name
+ 
 // look for any files that uses handlebars
 app.set('view engine', 'handlebars');
 
@@ -67,6 +70,24 @@ app.get('/each/helper', (req, res) => {
             {
                 items: ['tuna', 'vienna sausages', 'corned beef']
             }  
+        ]
+    });
+});
+
+app.get('/lookup', (req, res) =>{
+    
+    res.render('lookup', {
+        user: {
+            username: 'bobsb',
+            age: 40,
+            phone: 0983456
+        },
+        people: [
+            "Bob",
+            "Linda",
+            "Tina",
+            "Jean",
+            "Louise"
         ]
     });
 });
